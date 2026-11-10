@@ -1,0 +1,47 @@
+server:
+  port: ${PORT:8080}
+  error:
+    include-message: always
+spring:
+  application:
+    name: bloodbridge
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:h2:mem:bloodbridge;DB_CLOSE_DELAY=-1}
+    username: ${SPRING_DATASOURCE_USERNAME:sa}
+    password: ${SPRING_DATASOURCE_PASSWORD:}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+bloodbridge:
+  seed-demo-data: ${SEED_DEMO_DATA:true}
+  allowed-origins: ${ALLOWED_ORIGINS:http://localhost:5173}
+  jwt:
+    secret: ${JWT_SECRET:dev-only-secret-change-me-dev-only-secret-change-me}
+    expiry-minutes: 480
+  admin:
+    email: ${ADMIN_EMAIL:admin@bloodbridge.local}
+    password: ${ADMIN_PASSWORD:Admin@12345}
+  matching:
+    w-distance: 50
+    w-recency: 25
+    w-logistics: 15
+    w-verified: 10
+    max-distance-km: 50
+    recency-window-hours: 168
+    min-donation-interval-days: 90
+    assumed-speed-kmh: 30
+    invite-multiplier: 3
+    max-invites-per-request: 15
+  notifications:
+    email-enabled: ${EMAIL_ENABLED:false}
+    from: ${MAIL_FROM:no-reply@bloodbridge.local}
+    max-attempts: 3
+  scheduler:
+    enabled: true
+    delay-ms: 15000

@@ -1,0 +1,36 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: create-drop
+bloodbridge:
+  seed-demo-data: true
+  allowed-origins: http://localhost:5173
+  jwt:
+    secret: test-secret-test-secret-test-secret-test-secret
+    expiry-minutes: 60
+  admin:
+    email: admin@bloodbridge.local
+    password: Admin@12345
+  matching:
+    w-distance: 50
+    w-recency: 25
+    w-logistics: 15
+    w-verified: 10
+    max-distance-km: 50
+    recency-window-hours: 168
+    min-donation-interval-days: 90
+    assumed-speed-kmh: 30
+    invite-multiplier: 3
+    max-invites-per-request: 15
+  notifications:
+    email-enabled: false
+    from: test@bloodbridge.local
+    max-attempts: 3
+  scheduler:
+    enabled: false
+    delay-ms: 15000
